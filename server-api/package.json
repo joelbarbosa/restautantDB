@@ -2,7 +2,7 @@
   "name": "server-api",
   "version": "1.0.0",
   "description": "api for backend service",
-  "main": "index.js",
+  "main": "./app/app.js",
   "scripts": {
     "start": "nodemon ./bin/www --exec babel-node",
     "build": "babel lib -d dist",

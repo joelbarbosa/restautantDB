@@ -4,19 +4,15 @@
  * Module dependencies.
  */
 
-const app = require('../lib/app');
-const debug = require('debug')('server-api:server');
-const http = require('http');
+import app from '../app/app';
+import { debug } from 'debug';
+import http from 'http';
 
 /**
  * Get port from environment and store in Express.
  */
 let port = normalizePort(process.env.PORT || app.get('port_server-api'));
 app.set('port', port);
-
-// http.createServer(app).listen(app.get('port'), function() {
-//   console.log('Express server listening on port ' + app.get('port'));
-// });
 
 /**
  * Create HTTP server.

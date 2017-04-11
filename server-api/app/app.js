@@ -5,38 +5,36 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import Config from '../config/config.js';
-import fs from 'fs';
 import { Logger as log } from 'console4color';
 
-const app = express();
+// import routes from './controllers/restaurant_controller';
+import routes from './routes';
 
-log.info("port " + Config.port);
+let app = express();
 
 app.set('port_server-api', Config.port);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-fs.readdirSync('./lib/controllers').forEach(function(file) {  
-  if(file.substr(-3) == '.js') {
-  	const route = require('./controllers/' + file);
-  	route.controllers(app);
-  }
-});
+routes.init(app);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+app.use((req, res, next) => {
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
+// error handler
+app.use((err, req, res, next) => {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
-// app.get('/', (req, res) => {
-//   res.status(200).json({ name: 'tobi' });
-// });
-
-// app.listen(3000, () => {
-  
-// });
+module.exports = app;
