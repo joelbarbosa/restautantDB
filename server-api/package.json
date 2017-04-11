@@ -7,7 +7,9 @@
     "start": "nodemon lib/app.js --exec babel-node",
     "build": "babel lib -d dist",
     "serve": "node dist/app.js",
-    "test": "mocha --compilers js:babel-register"
+    "test": "mocha --compilers js:babel-register",
+    "lint": "jshint --exclude ./.hintignore .",
+    "pretest": "npm run lint"
   },
   "author": "joelbarbosa",
   "license": "MIT",
@@ -20,7 +22,9 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
     "gulp": "^3.9.1",
+    "jshint": "^2.9.4",
     "mocha": "^3.2.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "supertest": "^3.0.0"
   }
 }

@@ -1,11 +1,14 @@
-import http from 'http';
-import assert from 'assert';
+import request from 'supertest';
+import express from 'express';
+const app = express();
 
-describe('Exemple Node Server', () => {
-  it('should return 200', done => {
-    http.get('http://localhost:3000/', res => {
-      assert.equal(200, res.statusCode)
-      done();
-    });
+
+describe('Server is working', () => {
+  it('GET / should respond with json', (done) => {
+    request(app)
+      .get('/')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200, done);
   });
 });

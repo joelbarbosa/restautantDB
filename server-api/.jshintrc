@@ -1,0 +1,9 @@
+{
+  "curly": true,
+  "eqeqeq": true,
+  "undef": true,
+  "nocomma": true,
+  "unused": false,
+  "mocha": true,
+  "esversion": 6
+}
