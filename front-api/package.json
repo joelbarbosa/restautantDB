@@ -1,0 +1,19 @@
+{
+  "name": "front-api",
+  "version": "1.0.0",
+  "description": "front app for code challenge dbserver",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "joelbarbosa",
+  "license": "MIT",
+  "dependencies": {       
+    "express": "^4.15.2"    
+  },
+  "devDependencies": {    
+    "gulp": "^3.9.1",    
+    "nodemon": "^1.11.0"    
+  }
+}
