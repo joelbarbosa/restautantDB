@@ -6,8 +6,6 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import Config from '../config/config.js';
 import { Logger as log } from 'console4color';
-
-// import routes from './controllers/restaurant_controller';
 import routes from './routes';
 
 let app = express();
@@ -37,4 +35,4 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-module.exports = app;
+export default app;

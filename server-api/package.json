@@ -7,7 +7,7 @@
     "start": "nodemon ./bin/www --exec babel-node",
     "build": "babel lib -d dist",
     "serve": "node dist/app.js",
-    "test": "mocha --compilers js:babel-register",
+    "test": "mocha --recursive --compilers js:babel-register",
     "lint": "jshint --exclude ./.hintignore .",
     "pretest": "npm run lint"
   },
@@ -32,6 +32,7 @@
     "jshint": "^2.9.4",
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
+    "should": "^11.2.1",
     "supertest": "^3.0.0"
   }
 }
