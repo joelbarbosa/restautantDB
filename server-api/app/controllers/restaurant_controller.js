@@ -1,7 +1,9 @@
+import restaurant from '../models/restaurant_model';
+
 class RestaurentController {
 
   getRestaurants(req, res, next) {
-    res.json({id:'1'});
+    res.json({restaurants: restaurant.getRestaurants()});
   }
 }
 const restaurentController = new RestaurentController();

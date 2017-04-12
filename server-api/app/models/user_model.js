@@ -1,13 +1,11 @@
 import allUsers from '../schemas/user_schema';
-import { Logger as log } from 'console4color';
 
 class UserModel {
-  constructor() {
-  }
 
-  allUsers() {
+  getUsers() {    
     return allUsers;
   }
 
 }
-export default UserModel;
+const user = new UserModel();
+export default user;
