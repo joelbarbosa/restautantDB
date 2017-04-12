@@ -1,14 +1,14 @@
 import request from 'supertest';
-import express from 'express';
-const app = express();
+import app from '../../app/app';
 
+describe('UserController service all user', () => {
 
-describe('Server is working', () => {
-  it('GET / should respond with json', (done) => {
+  it('GET /api/users', (done) => {
     request(app)
-      .get('/')
+      .get('/api/users')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200, done);
   });
+
 });
