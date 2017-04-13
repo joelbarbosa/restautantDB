@@ -13,7 +13,12 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'node_modules/angular/angular.js',
-            'app/tests/**/*.js'
+            'node_modules/angular-route/angular-route.js',
+            'node_modules/angular-mocks/angular-mocks.js',
+            'node_modules/oclazyload/dist/oclazyload.js',
+            'node_modules/angular-translate/dist/angular-translate.js',            
+            'app/app.js',
+            'app/**/**/*.js'            
         ],
 
 
@@ -21,12 +26,12 @@ module.exports = function (config) {
         // Note: this was added AFTER karma init was completed.
         /*********************************************************/
         ngHtml2JsPreprocessor: {
-            stripPrefix: 'src/',
+            stripPrefix: 'app/',
             //stripSufix: '.ext',
 
             // setting this option will create only a single module that contains templates
             // from all the files, so you can load them all with module('foo')
-            moduleName: 'myAppTemplates'
+            moduleName: 'app'
         },
 
         // list of files to exclude

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "./node_modules/karma/bin/karma start"
+    "test": "karma start"
   },
   "author": "joelbarbosa",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "oclazyload": "^1.1.0"
   },
   "devDependencies": {
+    "angular-mocks": "^1.6.4",
     "angular-translate": "^2.15.1",
     "gulp": "^3.9.1",
     "jasmine-core": "^2.5.2",

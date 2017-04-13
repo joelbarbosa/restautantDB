@@ -1,12 +1,4 @@
-const app = angular.module('app',[ 'pascalprecht.translate','ngRoute', 'oc.lazyLoad' ]);
-
-app.config(['$translateProvider', function ($translateProvider) {
-  $translateProvider.translations('en', {
-    'TITLE': 'Hello',
-    'FOO': 'This is a paragraph'
-  }).preferredLanguage('en');
-  $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
-}]);
+const app = angular.module('app',[ 'pascalprecht.translate', 'ngRoute', 'oc.lazyLoad' ]);
 
 app.config(['$routeProvider', ($routeProvider, $ocLazyLoadProvider) => {
   $routeProvider
@@ -19,6 +11,18 @@ app.config(['$routeProvider', ($routeProvider, $ocLazyLoadProvider) => {
        			return $ocLazyLoad.load('app/home/controllers/HomeController.js'); }]
        		 
         }
-    });
-    
+    })
+    .when('/restaurant', {		
+        templateUrl: '/app/restaurant/views/restaurant.html',
+        controller: 'RestaurantController as restaurant',
+        resolve: {
+        	RestaurantController: 
+       		 ['$ocLazyLoad', function($ocLazyLoad) {
+       			return $ocLazyLoad.load('app/restaurant/controllers/RestaurantController.js'); }]       		 
+        }
+    }).otherwise({ redirectTo: '/' });
+
 }]);
+app.service('RestaurantService', function () {
+   
+});    
