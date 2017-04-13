@@ -5,17 +5,24 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/karma/bin/karma start"
   },
   "author": "joelbarbosa",
   "license": "MIT",
   "dependencies": {
     "angular": "^1.6.4",
+    "angular-route": "^1.6.4",
     "bootstrap": "^3.3.7",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "oclazyload": "^1.1.0"
   },
   "devDependencies": {
+    "angular-translate": "^2.15.1",
     "gulp": "^3.9.1",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.6.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.1.0",
     "nodemon": "^1.11.0"
   }
 }

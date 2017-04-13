@@ -4,6 +4,8 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'resources')));
 app.use("/resources", express.static("asset"));
+app.use('/scripts', express.static(__dirname + '/node_modules/'));
+app.use("/app", express.static(__dirname + '/app/'));
 
 app.get('/', (req, res) => {  
   res.sendFile(path.join(__dirname, 'app', 'index.html'));
