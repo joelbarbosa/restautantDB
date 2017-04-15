@@ -5,6 +5,8 @@ angular.module('app').controller('RestaurantController',
   $scope.isUserVotedToday = false;
   $scope.userSession = UserService.getUserStore();
   $scope.winner = {};
+  $scope.weekWinners = [];
+  $scope.startWeek = 1;
   UserService.setUserHead($scope.userSession);
   
   this.getRestaurants = () => {
@@ -19,9 +21,13 @@ angular.module('app').controller('RestaurantController',
   };
   
   this.vote = (restaurant) => {
-    
+    if(!this.isValidRestaurant(restaurant)) {
+      this.myAlert("It Restaurant alredy winner in this week!");
+      return false;
+    }
+
     if(!this.isValidVote()) {
-      this.myAlert("You alred voted today!");
+      this.myAlert("You alredy voted today!");
       return false;
     }
     $scope.selectedRestaurant = restaurant;
@@ -34,7 +40,7 @@ angular.module('app').controller('RestaurantController',
       item['isWinner'] = this.isWinner(item);
       return item;
     });
-
+    RestaurantService.saveRestaurants($scope.restaurants);
     return $scope.restaurants;
   };
 
@@ -43,6 +49,14 @@ angular.module('app').controller('RestaurantController',
       return false; 
     } 
     return true;    
+  };
+
+  this.isValidRestaurant = (restaurant) => { 
+    if ($scope.weekWinners.filter(e => 
+      e.restaurant == restaurant.name).length > 0) {
+      return false;
+    }
+    return true;
   };
 
   this.myAlert = (desc) => {
@@ -64,6 +78,29 @@ angular.module('app').controller('RestaurantController',
     }
     return false;
   };
+  
+  this.init = () => {
+    
+    try {
+      if(window.localStorage['restaurants'] !== undefined) {
+        $scope.restaurants = RestaurantService.getRestaurantsStore();
+      } else {
+        this.getRestaurants();
+      }
+      
+      if(window.localStorage['startWeek'] !== undefined) {
+        $scope.startWeek = window.localStorage['startWeek'];
+      }
 
-  this.getRestaurants();
+      if(window.localStorage['weekWinners'] !== undefined) {
+        $scope.weekWinners = window.localStorage['weekWinners'];
+      }
+
+    } catch(err) {
+      this.getRestaurants();
+    }
+  }
+  
+  this.init();
+
 });

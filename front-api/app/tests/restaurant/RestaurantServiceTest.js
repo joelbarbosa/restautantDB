@@ -23,6 +23,11 @@ describe('RestaurantService', function() {
   it('#getRestaurants() should exist', function() {
     expect(RestaurantService.getRestaurants).toBeDefined();
   });
+
+  it('#getDayOfWeek() should return name of day', () => {
+    let dayOfWeek = RestaurantService.getDayOfWeek('2017-04-14');
+    expect(dayOfWeek).toEqual('Friday');
+  });
   
   it('#getRestaurants() should fetch', function(done) {
     

@@ -58,5 +58,16 @@ describe('RestaurantController', function() {
     });
 
   });
+
+  describe('#finisVote(), should list the winners by week', () => {
+    it('should not allow the same restaurant in the same week', () => {
+      scope.weekWinners = [{ week: 1, restaurant: mockRestaurantVoted }];
+      scope.week = 1;
+      let isSameRestaurantSameWeek = RestaurantController.isValidRestaurant(mockRestaurantVoted);
+      expect(isSameRestaurantSameWeek).toBe(true);
+
+    });
+
+  });
   
 });

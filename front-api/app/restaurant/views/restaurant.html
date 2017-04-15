@@ -19,3 +19,31 @@
    </div>
   </div>
 </div>
+<br>
+
+<h4>The winners of the week</h4>
+<div class="bs-example" data-example-id="bordered-table"> 
+  <table class="table table-bordered">
+     <thead> 
+       <tr> 
+         <th># Week</th> 
+         <th>Restaurant</th> 
+      </tr> 
+      </thead> 
+      <tbody ng-repeat="restaurant in restaurants"> 
+        <tr> 
+         <th scope="row">{{restaurant.id}}</th>
+         <th scope="row">{{restaurant.name}}</th> 
+        </tr> 
+      </tbody> 
+  </table> 
+</div>
+
+<p>
+  <button 
+      type="submit"
+      ng-click="rest.vote(restaurant)" 
+      class="btn btn-primary">
+      End the day or wait for the clock.
+  </button>
+</p>
