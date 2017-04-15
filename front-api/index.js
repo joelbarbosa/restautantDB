@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'resources')));
-app.use("/resources", express.static("asset"));
+app.use("/resources", express.static("assets"));
 app.use('/scripts', express.static(__dirname + '/node_modules/'));
 app.use("/app", express.static(__dirname + '/app/'));
 

@@ -3,11 +3,32 @@ describe('RestaurantController', function() {
   let RestaurantController;
   let scope;
   
+  const userName = 'testUser';
+  const mockRestaurants = [
+      {id: 1, name: "Restaurant 1", desc: "simple desc 1", rate: 1, users:[]},
+      {id: 2, name: "Restaurant 2", desc: "simple desc 2", rate: 4, users:[]},
+      {id: 3, name: "Restaurant 3", desc: "simple desc 3", rate: 1, users:[]}
+  ];
+
+  const mockRestaurantVoted = {
+    id: 1, 
+    name: "Restaurant 1", 
+    desc: "simple desc 1", 
+    rate: 2,
+    users: [userName]
+  };
+
+  const mockRestaurantsVoted = [
+      {id: 1, name: "Restaurant 1", desc: "simple desc 1", rate: 2, users:[]},
+      {id: 2, name: "Restaurant 2", desc: "simple desc 2", rate: 4, users:[]},
+      {id: 3, name: "Restaurant 3", desc: "simple desc 3", rate: 1, users:[]}
+  ];
+  
   beforeEach(function () {
     module('app');
   });
 
-  beforeEach(inject(function($rootScope, $controller) {       
+  beforeEach(inject(($rootScope, $controller) => {       
     scope = $rootScope.$new();
     RestaurantController = $controller('RestaurantController', { $scope: scope });
   }));
@@ -19,22 +40,23 @@ describe('RestaurantController', function() {
     });
   });
   
-  describe('this.restaurants', () => {        
-    const messyList = [
-      {id: 1, name: "Restaurant 1", desc: "simple desc 1", rate: 0},
-      {id: 2, name: "Restaurant 2", desc: "simple desc 2", rate: 4},
-      {id: 3, name: "Restaurant 3", desc: "simple desc 3", rate: 1}
-    ];
-    
-    const sortList = [
-      {id: 2, name: "Restaurant 2", desc: "simple desc 2", rate: 4},
-      {id: 3, name: "Restaurant 3", desc: "simple desc 3", rate: 1},
-      {id: 1, name: "Restaurant 1", desc: "simple desc 1", rate: 0}        
-    ];
+  describe('#vote() should increase vote in restaurant', () => {
+    beforeEach(() => {
+      scope.restaurants = mockRestaurants;
+      scope.userSession = userName;
+    });
 
-    // it('#sortTopRate() should sort by top rate restaurants', () => {      
-    //   //expect(RestaurantController.sortTopRate).toEqual(sortList);
-    // });
+    it('add user and rate on restaurant', () => {
+      let increseRestaurants = RestaurantController.vote(mockRestaurants[0]); 
+      expect(increseRestaurants).toEqual(scope.restaurants);
+    });
+
+    it('should not allow the same vote in the same day', () => {
+      scope.isUserVotedToday = true;
+      let isSameUSer =  RestaurantController.isValidVote();
+      expect(isSameUSer).toBe(false);
+    });
+
   });
-
+  
 });

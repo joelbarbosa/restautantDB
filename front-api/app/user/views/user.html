@@ -1,0 +1,18 @@
+<h2 translate='TITLE_USER' translate-compile></h2>
+<div class="row">
+  <div class="container-fluid" ng-init="init()"> 
+    <div class="navbar-header"> 
+        <form class="navbar-form navbar-left"> 
+          <div class="form-group"> 
+            <input ng-model="user.userName" class="form-control" placeholder="@username"> 
+          </div> 
+          <button 
+            type="submit"
+            ng-click="user.loggin()" 
+            class="btn btn-default">
+              Logg in
+          </button> 
+        </form> 
+    </div>
+  </div>  
+</div>

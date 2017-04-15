@@ -7,8 +7,10 @@ import bodyParser from 'body-parser';
 import Config from '../config/config.js';
 import { Logger as log } from 'console4color';
 import routes from './routes';
+import cors from 'cors';
 
 let app = express();
+app.use(cors());
 
 app.set('port_server-api', Config.port);
 app.use(bodyParser.json());

@@ -16,7 +16,7 @@ module.exports = function (config) {
             'node_modules/angular-route/angular-route.js',
             'node_modules/angular-mocks/angular-mocks.js',
             'node_modules/oclazyload/dist/oclazyload.js',
-            'node_modules/angular-translate/dist/angular-translate.js',            
+            'node_modules/angular-translate/dist/angular-translate.js',          
             'app/app.js',
             'app/**/**/*.js'            
         ],

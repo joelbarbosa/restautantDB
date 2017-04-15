@@ -1,1 +1,21 @@
-restaurats
+<h2 translate='TITLE_RESTAURANT' translate-compile></h2>
+<h3>Choose your restaurant until noon <digital-clock></digital-clock></h3>
+
+<div class="row">
+ 
+  <div ng-repeat="restaurant in restaurants">
+  <div class="col-sm-4 {{restaurant.isWinner ? 'bg-warning' : ''}}"> 
+    <h3 id="download-bootstrap">{{restaurant.name}}</h3> 
+    <p>{{restaurant.desc}}</p> 
+    <p> 
+    <button 
+      type="submit"
+      ng-click="rest.vote(restaurant)" 
+      class="btn btn-primary">
+        Vote
+    </button> 
+    </p> 
+    <span class="label label-success">{{restaurant.rate}} % votes</span>
+   </div>
+  </div>
+</div>

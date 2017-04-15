@@ -1,3 +1,4 @@
-angular.module('app').controller('HomeController', function($scope, $ocLazyLoad) {
-  this.name = 'oi name';
+angular.module('app').controller('HomeController', function($scope, $ocLazyLoad, $location) {
+  $location.path("/user");
+  
 });
