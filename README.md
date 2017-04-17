@@ -61,20 +61,21 @@ $ npm start
 
 ## About the Project
 
-I use ES6 on backend with babel.
-In the frontend I just used the limitation in Node.
-I not bundle the project with webpack or any other framework.
+I used ES6 on backend with babel.<br />
+In the frontend I just used the limitation in Node.<br />
+I not bundle the project with webpack or any other framework.<br />
+<br />
+All test on backend are covered with jshint.<br />
+Non-functional loops were avoided.<br />
+<br />
+The 'pascalprecht.translate', <br />
+It was placed in the app module,<br /> 
+just to show what we could do with translator, we could<br />
+separete it for each language;<br />
+<br />
+We could split some items as user access in some directives,<br />
+but it was avoided.<br />
 
-All test on backend are covered with jshint.
-Non-functional loops were avoided.
-
-The 'pascalprecht.translate', 
-It was placed, badly in the app module, 
-just to show what we could do with translator.
-
-We could split some items as user access in some directives,
-but it was avoided.
-
-For loggin in the backend I user my own lib called:
-https://www.npmjs.com/package/console4color
+For loggin in the backend I put my own lib called:<br />
+https://www.npmjs.com/package/console4color<br />
 I developer it just to put collor in node console.
