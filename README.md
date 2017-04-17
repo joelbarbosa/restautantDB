@@ -74,3 +74,7 @@ just to show what we could do with translator.
 
 We could split some items as user access in some directives,
 but it was avoided.
+
+For loggin in the backend I user my own lib called:
+https://www.npmjs.com/package/console4color
+I developer it just to put collor in node console.
